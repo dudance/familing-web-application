@@ -1,0 +1,23 @@
+<header>
+  <div class="menu-logo">
+    <a routerLink="/main"><img src="../../assets/images/logo.svg" /></a>
+  </div>
+
+  <div class="menu">
+    <a routerLink="/all-families">Find family</a>
+    <a routerLink="/my-families">My families</a>
+  </div>
+
+  <div class="menu-icons">
+    <!-- <a><i class="fa fa-envelope"></i></a> -->
+    <a *ngIf="loginService.isUserLoggedIn()" routerLink="/edit-profile"
+      ><i class="fa fa-user"></i
+    ></a>
+    <a *ngIf="!loginService.isUserLoggedIn()" routerLink="/login"
+      ><i class="fa fa-user"></i
+    ></a>
+    <a *ngIf="loginService.isUserLoggedIn()" routerLink="/logout"
+      ><i class="fa fa-sign-out"></i
+    ></a>
+  </div>
+</header>

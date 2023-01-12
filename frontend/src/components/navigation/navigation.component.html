@@ -1,0 +1,18 @@
+<div class="navigation">
+  <nav>
+    <ul>
+      <li *ngIf="option != 'members'">
+        <a href="/my-families/id/{{ familyId }}/members">Members</a>
+      </li>
+      <li *ngIf="option != 'chronicles'">
+        <a href="/my-families/id/{{ familyId }}/chronicles">Chronicles</a>
+      </li>
+      <li *ngIf="option != 'discussion'">
+        <a routerLink="/chat/familyId&{{ familyId }}">Discussion</a>
+      </li>
+      <li *ngIf="familyOwnerId == currentUserId && option != 'requests'">
+        <a href="/my-families/id/{{ familyId }}/requests">Requests</a>
+      </li>
+    </ul>
+  </nav>
+</div>

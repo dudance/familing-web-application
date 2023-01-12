@@ -1,0 +1,44 @@
+<body>
+  <div class="container">
+    <div class="logo">
+      <img src="../../assets/images/logo.svg" />
+    </div>
+    <div class="form-container">
+      <form [formGroup]="loginForm">
+        <div class="single-field">
+          <img src="../../assets/images/email_icon.svg" />
+          <input
+            matInput
+            required
+            type="email"
+            [(ngModel)]="email"
+            name="email"
+            placeholder="email@domain.com"
+            formControlName="email"
+          />
+        </div>
+        <div class="single-field">
+          <img src="../../assets/images/password_icon.svg" />
+          <input
+            matInput
+            required
+            type="password"
+            [(ngModel)]="password"
+            name="password"
+            placeholder="password"
+            formControlName="password"
+          />
+        </div>
+        <div class="single-field" id="new-user">
+          <label>Not a member?</label>
+          <a href="/register">Sign up now</a>
+        </div>
+        <div class="single-field" id="login-button">
+          <button mat-raised-button (click)="checkLogin(loginForm.value)">
+            LOGIN
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>

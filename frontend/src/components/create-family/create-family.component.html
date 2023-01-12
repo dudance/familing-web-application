@@ -1,0 +1,40 @@
+<body>
+  <div class="main-container">
+    <main>
+      <div class="navigation">
+        <h1 class="title">Create family</h1>
+        <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+        <a id="back" routerLink="/my-families">Back</a>
+      </div>
+
+      <section class="project-form">
+        <div id="data">
+          <form [formGroup]="newFamilyForm">
+            <div class="single-field">
+              <input
+                name="name"
+                type="text"
+                placeholder="name"
+                formControlName="name"
+              />
+            </div>
+            <div class="single-field">
+              <textarea
+                name="description"
+                rows="5"
+                placeholder="description"
+                formControlName="description"
+              ></textarea>
+            </div>
+            <div class="single-field">
+              <input type="file" name="file" (change)="updateImage($event)" />
+            </div>
+            <div class="single-field">
+              <button (click)="onSubmit(newFamilyForm.value)">Create</button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>

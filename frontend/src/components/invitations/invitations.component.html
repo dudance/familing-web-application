@@ -1,0 +1,47 @@
+<body>
+  <div class="main-container">
+    <main>
+      <div class="navigation">
+        <h1 class="title">Your invitations</h1>
+        <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+        <a id="back" routerLink="/all-families">Back</a>
+      </div>
+      <h1 class="no-families" *ngIf="familiesList && familiesList.length == 0">
+        We couldn't find any Invitation
+      </h1>
+      <div class="families">
+        <div class="single-family" *ngFor="let family of familiesList">
+          <img *ngIf="family.image" src="./assets/{{ family.image }}" />
+          <h1>{{ family.name }}</h1>
+          <p *ngIf="family.surnames">
+            <strong>Surnames: </strong
+            >{{
+              family.surnames.toString().replaceAll(",", ", ").length > 100
+                ? (family.surnames.toString().replaceAll(",", ", ")
+                    | slice : 0 : 100) + "..."
+                : family.surnames.toString().replaceAll(",", ", ")
+            }}
+          </p>
+          <p><strong>Owner: </strong>{{ family.ownerData }}</p>
+          <div class="description">
+            <p><strong>Description: </strong> {{ family.description }}</p>
+          </div>
+          <div class="details">
+            <button
+              class="details_button"
+              (click)="acceptInvitation(family.id)"
+            >
+              Accept
+            </button>
+            <button
+              class="details_button"
+              (click)="declineInvitation(family.id)"
+            >
+              Decline
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>

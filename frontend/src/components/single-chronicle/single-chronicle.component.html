@@ -1,0 +1,27 @@
+<body>
+  <div class="main-container">
+    <div class="navigation">
+      <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+      <a id="back" routerLink="/my-families/id/{{ familyId }}/chronicles"
+        >Back</a
+      >
+    </div>
+    <main>
+      <h1 class="title" *ngIf="currentChronicle">
+        {{ currentChronicle.name }}
+      </h1>
+      <div id="entry" *ngIf="currentChronicle && ownerDetails">
+        <p id="entry_date">
+          <strong>{{
+            currentChronicle.date | date : "EEEE, MMMM d, y"
+          }}</strong>
+        </p>
+        <p id="entry_content">{{ currentChronicle.content }}</p>
+        <p id="entry_author">
+          <strong>By: </strong
+          >{{ ownerDetails.name + " " + ownerDetails.surname }}
+        </p>
+      </div>
+    </main>
+  </div>
+</body>

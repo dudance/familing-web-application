@@ -1,0 +1,21 @@
+<h1 class="title" *ngIf="currentFamily">{{ currentFamily.name }}</h1>
+<app-navigation
+  [option]="navigationOption"
+  [familyId]="familyId"
+  [currentUserId]="currentUserId"
+  [familyOwnerId]="familyOwnerId"
+></app-navigation>
+<ng-container [ngSwitch]="navigationOption">
+  <app-family-members
+    *ngSwitchCase="'members'"
+    [familyId]="familyId"
+    [currentUserId]="currentUserId"
+    [familyOwnerId]="familyOwnerId"
+  ></app-family-members>
+  <app-requests *ngSwitchCase="'requests'" [familyId]="familyId"></app-requests>
+  <app-chronicles
+    *ngSwitchCase="'chronicles'"
+    [familyId]="familyId"
+  ></app-chronicles>
+  <app-discussion *ngSwitchCase="'discussion'"></app-discussion>
+</ng-container>

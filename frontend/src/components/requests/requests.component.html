@@ -1,0 +1,28 @@
+<body>
+  <div class="main-container">
+    <main>
+      <h2 class="title">Requests</h2>
+      <h1
+        class="no-families"
+        *ngIf="listOfUsersOfRequests && listOfUsersOfRequests.length == 0"
+      >
+        We couldn't find any Request
+      </h1>
+      <div class="families">
+        <div class="single-family" *ngFor="let user of listOfUsersOfRequests">
+          <img *ngIf="user.image" src="./assets/{{ user.image }}" />
+          <p><strong>Name: </strong> {{ user.name }}</p>
+          <p><strong>Surname: </strong> {{ user.surname }}</p>
+          <div class="details">
+            <button class="details_button" (click)="acceptRequest(user.id)">
+              Accept
+            </button>
+            <button class="details_button" (click)="declineRequest(user.id)">
+              Decline
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>

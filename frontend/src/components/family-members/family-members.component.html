@@ -1,0 +1,63 @@
+<body>
+  <div class="main-container">
+    <main>
+      <h1 class="title" *ngIf="currentFamily">{{ currentFamily.name }}</h1>
+      <div class="add_member" *ngIf="currentUserId == familyOwnerId">
+        <form>
+          <mat-form-field>
+            <mat-label>Invite user</mat-label>
+            <mat-select
+              id="listOfUsers"
+              (selectionChange)="updateSelectedUser($event.value)"
+            >
+              <mat-form-field class="example-full-width">
+                <input
+                  matInput
+                  placeholder="Enter Email"
+                  (keyup)="updateInput($event.target.value)"
+                />
+              </mat-form-field>
+              <mat-option></mat-option>
+              <mat-option
+                [disabled]="true"
+                *ngIf="filteredUsers && filteredUsers.length == 0"
+                >Email not found</mat-option
+              >
+              <mat-option *ngFor="let user of filteredUsers" [value]="user">{{
+                user.email
+              }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <button (click)="inviteUser()" mat-raised-button color="primary">
+            <mat-icon>group_add</mat-icon>
+            Add user
+          </button>
+        </form>
+      </div>
+      <h2 class="title" *ngIf="familyMembers">
+        Members({{ familyMembers.length }})
+      </h2>
+      <h1
+        class="no-families"
+        *ngIf="familyMembers && familyMembers.length == 0"
+      >
+        We couldn't find any member
+      </h1>
+      <div class="families">
+        <div class="single-family" *ngFor="let member of familyMembers">
+          <img
+            *ngIf="member.userDetailsId.image"
+            src="./assets/{{ member.userDetailsId.image }}"
+          />
+          <p><strong>Name:</strong> {{ member.userDetailsId.name }}</p>
+          <p><strong>Surname:</strong> {{ member.userDetailsId.surname }}</p>
+          <div class="details">
+            <a routerLink="/chat/{{ member.email }}">
+              <button class="details_button">Send message</button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>

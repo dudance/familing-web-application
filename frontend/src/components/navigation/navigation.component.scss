@@ -1,0 +1,27 @@
+.navigation li {
+    display: inline;
+    margin-left: 1em;
+}
+
+.navigation {
+    text-align: left;
+    font: normal normal 600 16px/22px Noto Sans;
+    letter-spacing: 0;
+    color: #3D3D3D;
+    opacity: 1;
+    width: 100%;
+    float: left;
+}
+
+.navigation a {
+    color: #3D3D3D;
+}
+
+.navigation nav {
+    text-align: center;
+    margin-bottom: 3em;
+}
+
+.navigation nav a {
+    text-decoration: none;
+}

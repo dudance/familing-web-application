@@ -1,0 +1,65 @@
+<body>
+  <div class="main-container">
+    <main>
+      <section class="project-form">
+        <h1 class="title">Create chronicle</h1>
+        <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+        <a id="back" href="/my-families/id/{{ familyId }}/chronicles">Back</a>
+        <div id="data">
+          <form [formGroup]="newChronicleForm">
+            <div class="single-field">
+              <input
+                required
+                name="name"
+                type="text"
+                placeholder="name"
+                formControlName="name"
+              />
+            </div>
+            <div class="single-field">
+              <input
+                required
+                name="date"
+                type="date"
+                placeholder="date"
+                formControlName="date"
+              />
+            </div>
+            <div class="single-field">
+              <textarea
+                required
+                id="description"
+                name="description"
+                rows="5"
+                placeholder="Please type content of your chronicle ..."
+                formControlName="content"
+              ></textarea>
+            </div>
+            <button (click)="onSubmit(newChronicleForm.value)">Create</button>
+          </form>
+        </div>
+      </section>
+      <div class="container" *ngIf="isBrowserSupportSpeechRecognition">
+        <h2 id="speechText">Click to speak:</h2>
+        <button
+          *ngIf="!speaking"
+          mat-mini-fab
+          color="primary"
+          id="speechButton"
+          (click)="addSpeech()"
+        >
+          <mat-icon>settings_voice</mat-icon>
+        </button>
+        <button
+          *ngIf="speaking"
+          mat-mini-fab
+          color="warn"
+          id="speechButton"
+          (click)="addSpeech()"
+        >
+          <mat-icon>settings_voice</mat-icon>
+        </button>
+      </div>
+    </main>
+  </div>
+</body>

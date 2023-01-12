@@ -1,0 +1,54 @@
+<body>
+  <div class="main-container">
+    <main>
+      <div class="navigation">
+        <h1 class="title">My families</h1>
+        <div class="add_member">
+          <p>Create family</p>
+          <a href="/create-family"><i class="fa fa-plus-circle"></i></a>
+        </div>
+        <div class="search_bar">
+          <form>
+            <input
+              type="text"
+              placeholder="search family by name"
+              name="criteria"
+              (keyup)="searchFamilies($event.target.value)"
+            />
+            <button><i class="fa fa-search"></i></button>
+          </form>
+        </div>
+      </div>
+      <h1
+        class="no-families"
+        *ngIf="filteredFamilies && filteredFamilies.length == 0"
+      >
+        We couldn't find any family
+      </h1>
+      <div class="families">
+        <div class="single-family" *ngFor="let family of filteredFamilies">
+          <img *ngIf="family.image" src="./assets/{{ family.image }}" />
+          <h2>{{ family.name }}</h2>
+          <p *ngIf="family.surnames">
+            <strong>Surnames: </strong>
+            {{
+              family.surnames.toString().replaceAll(",", ", ").length > 100
+                ? (family.surnames.toString().replaceAll(",", ", ")
+                    | slice : 0 : 100) + "..."
+                : family.surnames.toString().replaceAll(",", ", ")
+            }}
+          </p>
+          <p><strong>Owner: </strong>{{ family.ownerData }}</p>
+          <div class="description">
+            <p><strong>Description: </strong>{{ family.description }}</p>
+          </div>
+          <div class="details">
+            <button class="details_button" (click)="visitFamilyPage(family.id)">
+              Visit
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>

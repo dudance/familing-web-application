@@ -1,0 +1,47 @@
+<body>
+  <div class="main-container">
+    <main>
+      <div class="user_details">
+        <h1 class="title">Edit your profile</h1>
+        <div id="data">
+          <form [formGroup]="userDetailsForm">
+            <div class="single-field">
+              <i class="fa fa-address-card"></i>
+              <p class="label">Name:</p>
+              <input required type="text" name="name" formControlName="name" />
+            </div>
+            <div class="single-field">
+              <i class="fa fa-address-card"></i>
+              <p class="label">Surname:</p>
+              <input
+                required
+                type="text"
+                name="surname"
+                formControlName="surname"
+              />
+            </div>
+            <div class="single-field">
+              <i class="fa fa-phone"></i>
+              <p class="label">Number:</p>
+              <input type="number" name="phone" formControlName="phone" />
+            </div>
+            <div class="single-field">
+              <i class="fa fa-picture-o"></i>
+              <p class="label">Avatar:</p>
+              <input type="file" name="file" (change)="updateImage($event)" />
+            </div>
+            <div class="single-field" id="login-button">
+              <button (click)="onSubmit(userDetailsForm.value)">SAVE</button>
+            </div>
+          </form>
+        </div>
+        <div id="image">
+          <img
+            *ngIf="currentUserDetails && currentUserDetails.image"
+            src="./assets/{{ currentUserDetails.image }}"
+          />
+        </div>
+      </div>
+    </main>
+  </div>
+</body>

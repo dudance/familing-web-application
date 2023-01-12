@@ -1,0 +1,37 @@
+<footer>
+  <div class="about">
+    <h1>FAMILING</h1>
+    <a href="#">About us</a>
+    <a href="#">Contact</a>
+    <a href="#">Terms & Conditions</a>
+  </div>
+  <div class="newsletter">
+    <p>Subscribe to our newsletter</p>
+    <form [formGroup]="newsletterForm">
+      <input
+        type="email"
+        name="newsletter"
+        placeholder="email address"
+        formControlName="email"
+      />
+      <button (click)="onSubmit(newsletterForm.value)">OK</button>
+    </form>
+  </div>
+  <div class="social_media">
+    <div class="single_social_media">
+      <i class="fa fa-facebook"></i>
+      <p>Facebook</p>
+    </div>
+    <div class="single_social_media">
+      <i class="fa fa-twitter"></i>
+      <p>Twitter</p>
+    </div>
+    <div class="single_social_media">
+      <i class="fa fa-instagram"></i>
+      <p>Instagram</p>
+    </div>
+  </div>
+  <div class="copyright">
+    <p>Copyright © FAMILING. All rights reserved.</p>
+  </div>
+</footer>

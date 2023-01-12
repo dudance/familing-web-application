@@ -1,0 +1,69 @@
+<i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+<a id="back" *ngIf="isFamilyChat" href="/my-families/id/{{ familyId }}">Back</a>
+<a id="back" *ngIf="!isFamilyChat" href="/my-families">Back</a>
+<section class="msger">
+  <header class="msger-header">
+    <div class="msger-header-title">
+      <span *ngIf="otherUser"
+        >Chat with
+        {{
+          otherUser.userDetailsId.name + " " + otherUser.userDetailsId.surname
+        }}</span
+      >
+      <span *ngIf="isFamilyChat">Family chat</span>
+    </div>
+  </header>
+
+  <main class="msger-chat">
+    <div class="single-message" *ngFor="let msg of messages | async">
+      <div
+        class="msg left-msg"
+        *ngIf="
+          (otherUser && msg.ownerId.email == otherUser!.email) ||
+            (isFamilyChat && msg.ownerId.email != thisUser.email);
+          else thisUserMsg
+        "
+      >
+        <div class="msg-bubble">
+          <div class="msg-info">
+            <div *ngIf="!isFamilyChat" class="msg-info-name">
+              {{ otherUser.userDetailsId.name }}
+            </div>
+            <div *ngIf="isFamilyChat" class="msg-info-name">
+              {{ msg.ownerId.userDetailsId.name }}
+            </div>
+            <div class="msg-info-time">{{ msg.date | date : "short" }}</div>
+          </div>
+          <div class="msg-text">
+            {{ msg.content }}
+          </div>
+        </div>
+      </div>
+
+      <ng-template #thisUserMsg>
+        <div class="msg right-msg">
+          <div class="msg-bubble">
+            <div class="msg-info">
+              <div class="msg-info-name">Me</div>
+              <div class="msg-info-time">{{ msg.date | date : "short" }}</div>
+            </div>
+
+            <div class="msg-text">
+              {{ msg.content }}
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+  </main>
+
+  <form class="msger-inputarea">
+    <input
+      [formControl]="newMessage"
+      type="text"
+      class="msger-input"
+      placeholder="Enter your message..."
+    />
+    <button (click)="sendMsg()" class="msger-send-btn">Send</button>
+  </form>
+</section>

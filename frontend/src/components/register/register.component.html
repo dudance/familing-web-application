@@ -1,0 +1,65 @@
+<body>
+  <div class="container">
+    <div class="logo">
+      <img src="../../assets/images/logo.svg" />
+    </div>
+    <div class="form-container">
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div class="single-field">
+          <img src="../../assets/images/email_icon.svg" />
+          <input
+            type="email"
+            formControlName="email"
+            name="email"
+            placeholder="Email@domain.com"
+          />
+        </div>
+        <div class="single-field">
+          <img src="../../assets/images/user_icon.svg" />
+          <input
+            formControlName="firstName"
+            type="text"
+            name="name"
+            placeholder="First name"
+          />
+        </div>
+        <div class="single-field">
+          <img src="../../assets/images/user_icon.svg" />
+          <input
+            type="text"
+            formControlName="lastName"
+            name="surname"
+            placeholder="Surname"
+          />
+        </div>
+        <div class="single-field">
+          <img src="../../assets/images/password_icon.svg" />
+          <input
+            type="password"
+            formControlName="password"
+            name="password"
+            placeholder="Password"
+          />
+        </div>
+
+        <div class="single-field">
+          <img src="../../assets/images/password_icon.svg" />
+          <input
+            type="password"
+            formControlName="confirmPassword"
+            name="confirm_password"
+            placeholder="Confirm password"
+          />
+        </div>
+
+        <div class="single-field" id="new-user">
+          <label>Already have an account?</label>
+          <a href="/login">Log in</a>
+        </div>
+        <div class="single-field" id="login-button">
+          <button>REGISTER</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
